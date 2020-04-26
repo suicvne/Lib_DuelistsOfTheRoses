@@ -20,13 +20,24 @@
 // */
 using System;
 using ISUnityInterfaces;
+using LibDuelistsOfTheRoses.Interfaces.Data;
 using LibDuelistsOfTheRoses.Types;
 
 namespace LibDuelistsOfTheRoses.Interfaces
 {
     public interface IDORGrid
     {
+        IDORGridSpot[] p_GridSpots { get; set; }
+        IDORGameManager p_GameManagerRef { get; set; }
+
+        ILookupTable<TerrainType, IGameObject> p_TerrainToGameObjectLookup { get; set; }
+
         IDORGridSpot GetGridSpot(IVector location);
+
+
+        void ClearGrid();
+        void InitGrid();
+        void OnNewTurn();
     }
 
     public interface IDORGridSpot
