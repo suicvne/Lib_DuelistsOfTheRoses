@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD3EB496-2A7D-4848-B65D-D6EE0100D435}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LibDuelistsOfTheRoses</RootNamespace>
+    <AssemblyName>LibDuelistsOfTheRoses</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IDORCard.cs" />
+    <Compile Include="Types\CardAttributes.cs" />
+    <Compile Include="Types\CardClasses.cs" />
+    <Compile Include="Types\CardTypes.cs" />
+    <Compile Include="Interfaces\IDOREffectCard.cs" />
+    <Compile Include="Interfaces\IDORCardEffect.cs" />
+    <Compile Include="Types\EffectExecutionTime.cs" />
+    <Compile Include="Types\EffectApplicationType.cs" />
+    <Compile Include="Types\ComparisonMethod.cs" />
+    <Compile Include="Types\FieldCardFace.cs" />
+    <Compile Include="Types\FieldCardOwnership.cs" />
+    <Compile Include="Types\FieldCardPosition.cs" />
+    <Compile Include="Types\TerrainType.cs" />
+    <Compile Include="Types\DORActionType.cs" />
+    <Compile Include="Constants\DORConstants.cs" />
+    <Compile Include="Interfaces\IFieldCard.cs" />
+    <Compile Include="Interfaces\Renderers\ICardLevelRenderer.cs" />
+    <Compile Include="Interfaces\Data\ILookupTable.cs" />
+    <Compile Include="Interfaces\IDORGridSpot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISUnityInterfaces\ISUnityInterfaces.csproj">
+      <Project>{C23ABFDD-AFAB-486B-B958-650B8FA73BCC}</Project>
+      <Name>ISUnityInterfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Constants\" />
+    <Folder Include="Interfaces\Renderers\" />
+    <Folder Include="Interfaces\Data\" />
+    <Folder Include="Implementations\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

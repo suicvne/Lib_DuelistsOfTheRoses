@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibDuelistsOfTheRoses", "LibDuelistsOfTheRoses\LibDuelistsOfTheRoses.csproj", "{DD3EB496-2A7D-4848-B65D-D6EE0100D435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISUnityInterfaces", "ISUnityInterfaces\ISUnityInterfaces.csproj", "{C23ABFDD-AFAB-486B-B958-650B8FA73BCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD3EB496-2A7D-4848-B65D-D6EE0100D435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD3EB496-2A7D-4848-B65D-D6EE0100D435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD3EB496-2A7D-4848-B65D-D6EE0100D435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD3EB496-2A7D-4848-B65D-D6EE0100D435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23ABFDD-AFAB-486B-B958-650B8FA73BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23ABFDD-AFAB-486B-B958-650B8FA73BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23ABFDD-AFAB-486B-B958-650B8FA73BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23ABFDD-AFAB-486B-B958-650B8FA73BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
