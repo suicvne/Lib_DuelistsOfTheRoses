@@ -19,10 +19,20 @@
 //
 // */
 using System;
+using ISUnityInterfaces;
+using LibDuelistsOfTheRoses.Types;
+
 namespace LibDuelistsOfTheRoses.Interfaces
 {
+    public interface IDORGrid
+    {
+        IDORGridSpot GetGridSpot(IVector location);
+    }
+
     public interface IDORGridSpot
     {
-
+        IDORGrid p_Parent { get; set; }
+        IFieldCard p_ContainedCard { get; set; }
+        TerrainType p_TerrainType { get; set; }
     }
 }

@@ -29,6 +29,10 @@ namespace LibDuelistsOfTheRoses.Interfaces
 {
     public interface IFieldCard
     {
+        uint p_UniqueID { get; set; }
+
+        IGameObject p_GameObject { get; set; }
+
         FieldCardOwnership p_CardOwnership { get; set; }
 
         FieldCardFace p_ThisCardFace { get; set; }
@@ -45,9 +49,16 @@ namespace LibDuelistsOfTheRoses.Interfaces
         IFieldCardRenderer p_ThisCardRenderer { get; set; }
 
         IVector p_GridPosition { get; set; }
+        IDORGridSpot p_ThisGridSpot { get; set; }
 
-        void ApplyBonusAttack(int amount, IFieldCard cardApplyingEffect);
-        void RemoveBonusAttack(int amount, IFieldCard cardApplyingEffect);
+        IFieldCardEffectHandler p_FieldCardEffectHandler { get; set; }
+
+        ITerrainTypeToAdvantagesLookup p_TerrainAdvantageLookup { get; set; }
+
+
+        /// Methods
+
+
 
         void FlipCard(bool applyEffects = false);
         void ChangePosition(bool applyEffects = false);
@@ -69,6 +80,9 @@ namespace LibDuelistsOfTheRoses.Interfaces
         int p_EffectPreDeterminedBattleMode { get; set; }
         List<uint> p_FieldCardIDsAffectingThisCard { get; set; }
 
+        void ApplyBonusAttack(int amount, IFieldCard cardApplyingEffect);
+        void RemoveBonusAttack(int amount, IFieldCard cardApplyingEffect);
+
         void CheckCardEffects(EffectExecutionTime thisExecutionTime,
             IFieldCard optionalSecondCard = null,
             IDORGridSpot optionalBattlingTerrain = null,
@@ -78,6 +92,12 @@ namespace LibDuelistsOfTheRoses.Interfaces
 
     public interface IFieldCardRenderer
     {
+        IDORCard p_CardToRender { get; set; }
+        IFieldCard p_AssociatedFieldCard { get; set; }
+
+        bool p_EnableNegativeFilter { get; set; }
+        bool p_EnableFireEffect { get; set; }
+
         #region Lookup Tables
         ILookupTable<CardAttribute, ISprite> p_AttributeToSpriteLookupTable { get; set; }
         ILookupTable<CardType, ISprite> p_CardTypeToSpriteLookupTable { get; set; }

@@ -33,51 +33,53 @@ namespace LibDuelistsOfTheRoses.Interfaces
         
         EffectApplicationType p_EffectApplication { get; set; }
 
-        void CardEffect_Perform(IFieldCard hostCard, IDORGrid monsterGrid, IFieldCard battleOpposingCard = null, IFieldCard battlingTerrain = null);
-        void CardEffect_EndEffect();
+        void CardEffect_Perform(IFieldCard hostCard, IDORGrid monsterGrid, IFieldCard battleOpposingCard = null, IDORGridSpot battlingTerrain = null);
+        void CardEffect_EndEffect(IFieldCard hostCard, IDORGrid monsterGrid, IFieldCard opposingCard = null, IDORGridSpot battlingTerrain = null);
+
+        bool CardEffect_CanPerformEffect(IFieldCard hostCard);
 
         /// Instead, card effect gets to implement a lot of interfaces. Or better yet....just the ones they need. Oh yeah!
-        
+
         #endregion
     }
 
     public interface IHostRequiresPosition
     {
         // IHostRequiresPosition
-        public bool p_HostRequiredSpecificPosition { get; set; }
-        public CardType p_TargetRequiredCardType { get; set; }
+        bool p_HostRequiredSpecificPosition { get; set; }
+        CardType p_TargetRequiredCardType { get; set; }
         //
     }
 
     public interface IHostRequiresCardFace
     {
         // IHostRequiresCardFace
-        public bool p_HostRequiresSpecificFace { get; set; }
-        public FieldCardFace p_HostRequiredCardFace { get; set; }
+        bool p_HostRequiresSpecificFace { get; set; }
+        FieldCardFace p_HostRequiredCardFace { get; set; }
     }
 
     public interface ITargetRequiresCardFace
     {
         // ITargetRequiresCardFace
-        public bool p_TargetRequiresSpecificFace { get; set; }
-        public FieldCardFace p_TargetRequiredCardFace { get; set; }
+        bool p_TargetRequiresSpecificFace { get; set; }
+        FieldCardFace p_TargetRequiredCardFace { get; set; }
     }
 
     public interface ITargetRequiresCardAttribute
     {
         // ITargetRequiresAttribute
-        public bool p_TargetRequiresSpecificAttribute { get; set; }
-        public CardAttribute p_TargetRequiredCardAttribute { get; set; }
+        bool p_TargetRequiresSpecificAttribute { get; set; }
+        CardAttribute p_TargetRequiredCardAttribute { get; set; }
     }
 
     public interface ITargetRequiresMonsterSpecs
     {
         // ITargetRequiresMonsterSpecs
-        public ComparisonMethod p_PointComparisonMethod { get; set; }
-        public bool p_TargetRequiresSpecificAttack { get; set; }
-        public ushort p_TargetRequiredAttack { get; set; }
+        ComparisonMethod p_PointComparisonMethod { get; set; }
+        bool p_TargetRequiresSpecificAttack { get; set; }
+        ushort p_TargetRequiredAttack { get; set; }
 
-        public bool p_TargetRequiresSpecificDefense { get; set; }
-        public ushort p_TargetRequiredDefense { get; set; }
+        bool p_TargetRequiresSpecificDefense { get; set; }
+        ushort p_TargetRequiredDefense { get; set; }
     }
 }

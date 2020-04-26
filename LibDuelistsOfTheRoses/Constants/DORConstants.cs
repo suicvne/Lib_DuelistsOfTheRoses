@@ -23,13 +23,13 @@ using ISUnityInterfaces;
 
 namespace LibDuelistsOfTheRoses.Constants
 {
-    public static class DORConstants
+    public abstract class IDORConstants
     {
-        static IVector p_Player1Spawn { get; set; }
-        static IVector p_Player2Spawn { get; set; }
+        public static IVector p_Player1Spawn { get; set; }
+        public static IVector p_Player2Spawn { get; set; }
 
-        static IVector p_SummonAreaOffsets { get; set; }
-        static IVector p_GridMoveOffsets { get; set; }
-        static IVector p_GridAdvantageMoveOffsets { get; set; }
+        public static IVector[] p_SummonAreaOffsets { get; set; }
+        public static IVector[] p_GridMoveOffsets { get; set; }
+        public static IVector[] p_GridAdvantageMoveOffsets { get; set; }
     }
 }

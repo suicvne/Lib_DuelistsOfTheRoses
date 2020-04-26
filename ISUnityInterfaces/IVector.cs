@@ -27,5 +27,7 @@ namespace ISUnityInterfaces
         float p_Y { get; set; }
         float p_Z { get; set; }
         float p_W { get; set; }
+
+        IVector Offset(IVector b);
     }
 }

@@ -50,6 +50,9 @@
     <Compile Include="Interfaces\Renderers\ICardLevelRenderer.cs" />
     <Compile Include="Interfaces\Data\ILookupTable.cs" />
     <Compile Include="Interfaces\IDORGridSpot.cs" />
+    <Compile Include="Interfaces\Data\ITerrainTypeToAdvantagesLookup.cs" />
+    <Compile Include="Interfaces\Data\ICardList.cs" />
+    <Compile Include="Interfaces\Events\IGameEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISUnityInterfaces\ISUnityInterfaces.csproj">
@@ -62,6 +65,7 @@
     <Folder Include="Interfaces\Renderers\" />
     <Folder Include="Interfaces\Data\" />
     <Folder Include="Implementations\" />
+    <Folder Include="Interfaces\Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
