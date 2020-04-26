@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ISUnityInterfaces;
 using LibDuelistsOfTheRoses.Interfaces.Data;
 using LibDuelistsOfTheRoses.Interfaces.Events;
 using LibDuelistsOfTheRoses.Types;
@@ -48,9 +49,48 @@ namespace LibDuelistsOfTheRoses.Interfaces
         PlayerInformation p_Player1GameInformation { get; set; }
         PlayerInformation p_Player2GameInformation { get; set; }
 
+        int[] p_Player1Hand { get; set; }
+        int[] p_Player2Hand { get; set; }
+
         Queue<int> p_Player1Deck { get; set; }
         Queue<int> p_Player2Deck { get; set; }
 
         INetworkManager p_NetworkManagerInstance { get; set; }
+
+        void CheckForActiveEffects(bool ending);
+        void AddCardToGraveyard(IFieldCard card);
+        void ApplyLifepoints(int amount, FieldCardOwnership player);
+
+        void HandleMonsterOnField(IFieldCard card);
+        void HandleMonsterFlip(IFieldCard card);
+        void HandleMonsterPosition(IFieldCard card);
+        void HandleMonsterMove(IFieldCard card);
+
+        /// <summary>
+        /// Summons the card server side
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <param name="gridPosition"></param>
+        void SummonCard(int cardNumber, IVector gridPosition);
+
+        void SetDeck(FieldCardOwnership player, int[] cards);
+        void GetCardsFromDeck(uint playerID, FieldCardOwnership player, int neededCards);
+
+        void ReceiveRequestedCards(int[] cards);
+
+        void EndTurn();
+
+        /// <summary>
+        /// Verifies to make sure the cards that the player wants to play
+        /// match up to the cards the server thinks the player has.
+        /// </summary>
+        /// <param name="summonQueue">List of cards that want to be summoned. The last one to be summoned exists at the end of the list.</param>
+        /// <param name="player">Which player is playing the cards.</param>
+        /// <returns></returns>
+        bool PlayerCanSummonCards(int[] summonQueue, FieldCardOwnership player);
+
+        int[] ValidateDeck(int[] cardsInput);
+
+
     }
 }
