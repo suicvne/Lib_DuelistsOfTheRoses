@@ -53,6 +53,8 @@
     <Compile Include="Interfaces\Data\ITerrainTypeToAdvantagesLookup.cs" />
     <Compile Include="Interfaces\Data\ICardList.cs" />
     <Compile Include="Interfaces\Events\IGameEvent.cs" />
+    <Compile Include="Interfaces\IDORGameManager.cs" />
+    <Compile Include="Interfaces\INetworkManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISUnityInterfaces\ISUnityInterfaces.csproj">
