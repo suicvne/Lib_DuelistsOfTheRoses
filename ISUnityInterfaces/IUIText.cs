@@ -24,4 +24,9 @@ namespace ISUnityInterfaces
     public interface IUIText
     {
     }
+
+    public interface IUIText<T> : IEquatable<IUIText>
+    {
+        T UITextValue { get; set; }
+    }
 }

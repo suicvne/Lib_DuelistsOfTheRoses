@@ -24,4 +24,9 @@ namespace ISUnityInterfaces
     public interface ISpriteRenderer
     {
     }
+
+    public interface ISpriteRenderer<T> : IEquatable<ISpriteRenderer>
+    {
+        T SpriteRendererValue { get; set; }
+    }
 }

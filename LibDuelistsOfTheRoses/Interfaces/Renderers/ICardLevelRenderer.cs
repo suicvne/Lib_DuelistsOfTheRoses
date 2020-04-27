@@ -21,7 +21,12 @@
 using System;
 namespace LibDuelistsOfTheRoses.Interfaces.Renderers
 {
+    /// <summary>
+    /// Separate interface component used to handle
+    /// rendering level stars on the card.
+    /// </summary>
     public interface ICardLevelRenderer
     {
+        void SetStars(int starCount);
     }
 }

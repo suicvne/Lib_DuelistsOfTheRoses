@@ -21,8 +21,10 @@
 using System;
 namespace ISUnityInterfaces
 {
-    public interface ITexture
-    {
+    public interface ITexture { }
 
+    public interface ITexture<T> : IEquatable<ITexture>
+    {
+        T TextureValue { get; set; }
     }
 }

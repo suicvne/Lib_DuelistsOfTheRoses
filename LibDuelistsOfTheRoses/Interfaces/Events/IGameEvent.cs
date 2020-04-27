@@ -13,6 +13,11 @@ namespace LibDuelistsOfTheRoses.Interfaces.Events
         void UnregisterListener(IGameEventListener gameEventListener);
     }
 
+    public interface IGameEvent<T> : IEquatable<IGameEvent>
+    {
+        T GameEventValue { get; set; }
+    }
+
     public interface IGameEventListener
     {
         IGameEvent p_GameEvent { get; set; }
@@ -22,5 +27,10 @@ namespace LibDuelistsOfTheRoses.Interfaces.Events
         void DisableListener();
 
         void OnEventRaised(object parameter = null);
+    }
+
+    public interface IGameEventListener<T> : IEquatable<IGameEventListener>
+    {
+        T GameEventListenerValue { get; set; }
     }
 }

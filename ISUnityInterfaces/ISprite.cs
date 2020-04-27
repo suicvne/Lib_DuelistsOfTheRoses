@@ -23,4 +23,9 @@ namespace ISUnityInterfaces
 {
     public interface ISprite
     {    }
+
+    public interface ISprite<T> : IEquatable<ISprite>
+    {
+        T SpriteValue { get; set; }
+    }
 }

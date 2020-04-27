@@ -8,4 +8,9 @@ namespace ISUnityInterfaces
 
         T GetComponent<T>();
     }
+
+    public interface IGameObject<T> : IEquatable<IGameObject>
+    {
+        T GetGameObjectValue { get; set; }
+    }
 }

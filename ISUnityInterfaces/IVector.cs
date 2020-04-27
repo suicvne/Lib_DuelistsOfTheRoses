@@ -30,4 +30,9 @@ namespace ISUnityInterfaces
 
         IVector Offset(IVector b);
     }
+
+    public interface IVector<T> : IEquatable<IVector>
+    {
+        T Value { get; set; }
+    }
 }

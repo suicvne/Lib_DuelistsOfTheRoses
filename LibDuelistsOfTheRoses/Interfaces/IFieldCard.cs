@@ -260,15 +260,47 @@ namespace LibDuelistsOfTheRoses.Interfaces
         );
     }
 
+    /// <summary>
+    /// An interface describing a Field Card Renderer.
+    ///
+    /// Field card is a spawned instance of a card from the Master Card List.
+    /// It is responsible for constructing the visual representation of the card
+    /// based on the components attached to it. It also references lookup tables for
+    /// CardType and CardAttribute.
+    /// </summary>
     public interface IFieldCardRenderer
     {
+        /// <summary>
+        /// The database entry that we are rendering.
+        /// </summary>
         IDORCard p_CardToRender { get; set; }
+
+        /// <summary>
+        /// The IFieldCard that this IFieldCardRenderer belongs to.
+        /// </summary>
         IFieldCard p_AssociatedFieldCard { get; set; }
 
+        /// <summary>
+        /// Should we enable the negative filter over the card?
+        ///
+        /// The negative filter is used to visually represent a card
+        /// that is spellbound.
+        /// </summary>
         bool p_EnableNegativeFilter { get; set; }
+
+        /// <summary>
+        /// Should we enable the fire effect?
+        ///
+        /// The fire effect is used to represent a card being destroyed.
+        /// </summary>
         bool p_EnableFireEffect { get; set; }
 
         #region Lookup Tables
+
+        /// <summary>
+        /// A reference to the static lookup for convertnig a
+        /// CardAttribute to an ISprite/ITexture.
+        /// </summary>
         ILookupTable<CardAttribute, ISprite> p_AttributeToSpriteLookupTable { get; set; }
         ILookupTable<CardType, ISprite> p_CardTypeToSpriteLookupTable { get; set; }
         #endregion
@@ -277,14 +309,10 @@ namespace LibDuelistsOfTheRoses.Interfaces
         IUIText p_CardNameRenderer { get; set; }
         ISpriteRenderer p_CardAttributeRenderer { get; set; }
         ICardLevelRenderer p_LevelStarRenderer { get; set; }
+        IUIText p_CardAttackRenderer { get; set; }
         #endregion
 
         void UpdateCardView(int bonusAtk = 0, int bonusDef = 0, int terrainBonsuAtk = 0, int terrainBonusDef = 0, bool doNotApplyRotate = false);
-    }
-    
-    public interface IMonsterCardRenderer
-    {
-        IUIText p_CardAttackRenderer { get; set; }
     }
 
     public interface IFieldDeckLeader
