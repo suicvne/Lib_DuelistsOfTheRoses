@@ -24,9 +24,31 @@ namespace LibDuelistsOfTheRoses.Interfaces
     }
 
     /// <summary>
-    /// Defines a Game Manager.
+    /// Defines an interface representing a DORGameManager.
     ///
-    /// On the server, this sends the deck to an equivalent object client side
+    /// The DORGameManager is another clusterfuck object responsible for a few things.
+    ///
+    /// 1. It IS the server. Clients have a "Client Only" version of this that handles
+    ///    events received from the server-side IDORGameManager. It is up to the implementation
+    ///    to handle that. Unity/Mirror implementation allows this split naturally through
+    ///    Commands and Rpc calls.
+    /// 2. It shuffles and deals cards.
+    /// 3. It acts as the liason for any moves on the field.
+    /// 4. It manages player information.
+    /// 5. It handles the graveyard.
+    ///
+    /// When the object is instantiated and the server is started, the grid is created
+    /// server side. When a client wants to connect, they send a message to the server
+    /// letting them know what their
+    ///    - Player Name
+    ///    - Username
+    ///    - Deck
+    /// is. The server verifies that and allows them to connect, then sending out field information
+    /// for the client to reconstruct.
+    ///
+    ///
+    /// So it's a huge object, and most of these things could be split into separate behaviours. However,
+    /// I stand firm that this large interface has reason to exist as a Singleton.
     /// </summary>
     public interface IDORGameManager
     {
@@ -126,9 +148,6 @@ namespace LibDuelistsOfTheRoses.Interfaces
         /// </summary>
         INetworkManager p_NetworkManagerInstance { get; set; }
 
-        void CheckForActiveEffects(bool ending);
-        void AddCardToGraveyard(IFieldCard card);
-
         /// <summary>
         /// Applies damage or healing to the specified player given an amount.
         /// Negative values will inflict damage, positive values will heal.
@@ -138,6 +157,9 @@ namespace LibDuelistsOfTheRoses.Interfaces
         void ApplyLifepoints(int amount, FieldCardOwnership player);
 
         #region Player sends commands to server to move card.
+
+        void CheckForActiveEffects(bool ending);
+        void AddCardToGraveyard(IFieldCard card);
 
         void HandleMonsterOnField(IFieldCard card);
         void HandleMonsterFlip(IFieldCard card);
@@ -153,13 +175,34 @@ namespace LibDuelistsOfTheRoses.Interfaces
         /// <param name="gridPosition"></param>
         void SummonCard(int cardNumber, IVector gridPosition);
 
-
+        /// <summary>
+        /// Function used to assign a deck to player information.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="cards"></param>
         void SetDeck(FieldCardOwnership player, int[] cards);
 
+        /// <summary>
+        /// When the player asks IDORGameManager for cards, they are drawing
+        /// from the deck that the server-side IDORGameManager manages.
+        /// </summary>
+        /// <param name="playerID">The player ID to send the message to</param>
+        /// <param name="player">Which player it's for</param>
+        /// <param name="neededCards">The number of cards that are needed from 0-5</param>
         void GetCardsFromDeck(uint playerID, FieldCardOwnership player, int neededCards);
 
+        /// <summary>
+        /// Client side function to receive the requested cards
+        /// and pass them to the client-side player to be displayed.
+        /// </summary>
+        /// <param name="cards"></param>
         void ReceiveRequestedCards(int[] cards);
 
+        /// <summary>
+        /// The server ends the current player's turn moving onto the next player.
+        /// This will only ever result in p_CurrentPlayerTurn being .Player1 or .Player2
+        /// .Spectator is not a real player.
+        /// </summary>
         void EndTurn();
 
         /// <summary>
